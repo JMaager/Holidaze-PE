@@ -43,11 +43,6 @@ VITE_BASE_API_URL=https://v2.api.noroff.dev
 VITE_API_KEY=your_noroff_api_key
 ```
 
-Notes:
-
-- `VITE_API_BASE_URL` is supported as a backward-compatible alias for the base URL.
-- `VITE_NOROFF_API_KEY` and `VITE_HOLIDAZE_API_KEY` are also supported aliases for the API key.
-
 ### Development
 
 ```bash
