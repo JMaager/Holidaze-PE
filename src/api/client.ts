@@ -5,7 +5,11 @@ const BASE_URL =
   (import.meta.env.VITE_BASE_API_URL as string | undefined) ??
   (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
   "https://v2.api.noroff.dev";
-const API_KEY = (import.meta.env.VITE_API_KEY as string | undefined) ?? "";
+const API_KEY =
+  (import.meta.env.VITE_API_KEY as string | undefined) ??
+  (import.meta.env.VITE_NOROFF_API_KEY as string | undefined) ??
+  (import.meta.env.VITE_HOLIDAZE_API_KEY as string | undefined) ??
+  "";
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
@@ -36,8 +40,9 @@ function buildHeaders(extra?: Record<string, string>): HeadersInit {
     ...extra,
   };
 
-  if (API_KEY) {
-    headers["X-Noroff-API-Key"] = API_KEY;
+  const normalizedApiKey = API_KEY.trim();
+  if (normalizedApiKey) {
+    headers["X-Noroff-API-Key"] = normalizedApiKey;
   }
 
   const token = getToken();
