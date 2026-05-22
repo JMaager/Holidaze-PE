@@ -1,8 +1,11 @@
 import { getToken } from "./auth";
 import { throwApiError } from "./errors";
 
-const BASE_URL = import.meta.env.VITE_BASE_API_URL as string;
-const API_KEY = import.meta.env.VITE_API_KEY as string;
+const BASE_URL =
+  (import.meta.env.VITE_BASE_API_URL as string | undefined) ??
+  (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
+  "https://v2.api.noroff.dev";
+const API_KEY = (import.meta.env.VITE_API_KEY as string | undefined) ?? "";
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
@@ -30,9 +33,12 @@ function buildUrl(path: string, params?: RequestOptions["params"]): string {
 function buildHeaders(extra?: Record<string, string>): HeadersInit {
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
-    "X-Noroff-API-Key": API_KEY,
     ...extra,
   };
+
+  if (API_KEY) {
+    headers["X-Noroff-API-Key"] = API_KEY;
+  }
 
   const token = getToken();
   if (token) {

@@ -34,6 +34,17 @@ A modern venue booking platform built with React, TypeScript, and Vite. Users ca
 npm install
 ```
 
+### Environment Variables
+
+Create a `.env` file (or set env vars in your hosting provider) with:
+
+```bash
+VITE_BASE_API_URL=https://v2.api.noroff.dev
+VITE_API_KEY=your_noroff_api_key
+```
+
+Note: `VITE_API_BASE_URL` is also supported as a backward-compatible alias.
+
 ### Development
 
 ```bash
@@ -60,7 +71,10 @@ npm run preview
 2. Connect your repository to [Netlify](https://netlify.com)
 3. Set build command: `npm run build`
 4. Set publish directory: `dist`
-5. Deploy automatically on push
+5. Add environment variables:
+   - `VITE_BASE_API_URL=https://v2.api.noroff.dev`
+   - `VITE_API_KEY=your_noroff_api_key`
+6. Deploy automatically on push
 
 ### GitHub Pages
 
