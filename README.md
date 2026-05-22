@@ -82,11 +82,3 @@ npm run preview
    ```
 
 3. Enable GitHub Pages in repository Settings → Pages → Source: Deploy from branch → `main/dist`
-
-## QA & Performance
-
-- Lighthouse Performance: 73
-- Accessibility: 100
-- Best Practices: 79
-- SEO: 100
-- Axe Accessibility: 0 violations
